@@ -48,7 +48,7 @@ const sendQuestions = () => {
     }
 
     tg.sendData(JSON.stringify(questions));
-    tg.close();
+    // tg.close();
 }
 
 // sendButton.addEventListener("click", sendQuestions);
