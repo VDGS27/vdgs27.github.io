@@ -24,6 +24,7 @@ const getCheckedRadioButtonsByName = (name) => {
     return  checkedRadioButton[0];
 }
 
+
 const GetAnswerIndex = (radioId) => {
     let radioIdSplit = radioId.split("_");
     return radioIdSplit[radioIdSplit.length - 1];
