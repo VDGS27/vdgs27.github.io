@@ -3,12 +3,15 @@
 let tg = window.Telegram.WebApp;
 tg.expand();
 
+tg.MainButton.setText("Закончить");
+tg.MainButton.show();
+
 const allRadioButtons = [...document.querySelectorAll("input")];
 allRadioButtons.forEach((item) => {
     item.checked = false;
 });
 
-const sendButton = document.querySelector(".send-button");
+// const sendButton = document.querySelector(".send-button");
 
 const answers = allRadioButtons.map(x => x.name)
     .filter((value, index, array) => array.indexOf(value) === index);
@@ -48,4 +51,5 @@ const sendQuestions = () => {
     tg.close();
 }
 
-sendButton.addEventListener("click", sendQuestions);
+// sendButton.addEventListener("click", sendQuestions);
+Telegram.WebApp.onEvent("mainButtonClicked", sendQuestions);
