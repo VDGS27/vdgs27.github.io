@@ -44,7 +44,7 @@ const sendQuestions = () => {
         questions[answer] = GetAnswerIndex(checkedRadioButton.id);
     }
 
-    tg.sendData(questions);
+    tg.sendData(JSON.stringify(questions));
     tg.close();
 }
 
