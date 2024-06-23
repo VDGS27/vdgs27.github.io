@@ -3,8 +3,8 @@
 let tg = window.Telegram.WebApp;
 tg.expand();
 
-tg.MainButton.setText("Закончить");
-tg.MainButton.show();
+// tg.MainButton.setText("Закончить");
+// tg.MainButton.show();
 
 const allRadioButtons = [...document.querySelectorAll("input")];
 allRadioButtons.forEach((item) => {
