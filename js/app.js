@@ -47,8 +47,8 @@ const sendQuestions = () => {
         questions[answer] = GetAnswerIndex(checkedRadioButton.id);
     }
 
-    tg.sendData("1");
-    //tg.close();
+    Telegram.WebApp.sendData("1");
+    Telegram.WebApp.close();
 }
 
 sendButton.addEventListener("click", sendQuestions);
