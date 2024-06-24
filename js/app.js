@@ -5,6 +5,7 @@ tg.expand();
 
 tg.MainButton.setText("Закончить");
 tg.MainButton.show();
+tg.switchInlineQuery();
 
 const allRadioButtons = [...document.querySelectorAll("input")];
 allRadioButtons.forEach((item) => {
