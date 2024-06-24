@@ -11,15 +11,15 @@ allRadioButtons.forEach((item) => {
     item.checked = false;
 });
 
-console.log(tg.initData)
+// console.log(tg.initData)
 
 const sendButton = document.querySelector(".send-button");
 
 const answers = allRadioButtons.map(x => x.name)
     .filter((value, index, array) => array.indexOf(value) === index);
 
-const greetings = document.querySelector(".greetings");
-greetings.innerText = `Здравствуйте, ${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name}`;
+// const greetings = document.querySelector(".greetings");
+// greetings.innerText = `Здравствуйте, ${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name}`;
 
 const getCheckedRadioButtonsByName = (name) => {
     let checkedRadioButton = allRadioButtons.filter(x => x.name === name && x.checked);
