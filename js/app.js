@@ -11,6 +11,8 @@ allRadioButtons.forEach((item) => {
     item.checked = false;
 });
 
+console.log(tg.initData)
+
 const sendButton = document.querySelector(".send-button");
 
 const answers = allRadioButtons.map(x => x.name)
