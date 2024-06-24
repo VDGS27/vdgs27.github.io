@@ -47,12 +47,12 @@ const sendQuestions = () => {
         questions[answer] = GetAnswerIndex(checkedRadioButton.id);
     }
 
-    Telegram.WebApp.sendData("1");
+    window.Telegram.WebApp.sendData("1");
     Telegram.WebApp.close();
 }
 
 sendButton.addEventListener("click", sendQuestions);
 Telegram.WebApp.onEvent("mainButtonClicked", function () {
-    tg.sendData("1");
+    window.Telegram.WebApp.sendData("1");
     tg.close();
 });
