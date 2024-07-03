@@ -1,5 +1,7 @@
 const allRadioButtons = [... document.querySelectorAll(".answer__radio")]
 
+const tg = window.Telegram.WebApp;
+tg.expand();
 
 const validationError = document.querySelector(".validation-error")
 const validationCloseButton = document.querySelector(".validation-error__close-button")
@@ -82,7 +84,8 @@ endButton.addEventListener("click", () => {
         return null
     }
 
-    console.log(testSummery)
+    tg.sendData(JSON.stringify(testSummery));
+    tg.close();
 
 })
 
