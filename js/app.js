@@ -1,50 +1,88 @@
+const allRadioButtons = [... document.querySelectorAll(".answer__radio")]
 
 
-let tg = window.Telegram.WebApp;
-tg.expand();
-
-tg.MainButton.setText("Закончить");
-tg.MainButton.show();
-
-const allRadioButtons = [...document.querySelectorAll("input")];
-allRadioButtons.forEach((item) => {
-    item.checked = false;
-});
+const validationError = document.querySelector(".validation-error")
+const validationCloseButton = document.querySelector(".validation-error__close-button")
 
 
-const answers = allRadioButtons.map(x => x.name)
+allRadioButtons.forEach(radioButton => radioButton.checked = false)
+
+
+const endButton = document.querySelector(".end-button")
+
+
+const names = allRadioButtons.map(radioButton => radioButton.name)
     .filter((value, index, array) => array.indexOf(value) === index);
 
-const getCheckedRadioButtonsByName = (name) => {
-    let checkedRadioButton = allRadioButtons.filter(x => x.name === name && x.checked);
-    if (checkedRadioButton.length === 0){
-        return null;
-    }
-    return  checkedRadioButton[0];
+const getRadioButtonId = (radioButton) => {
+    let splitId = radioButton.id.split("-")
+    return parseInt(splitId[splitId.length - 1])
 }
 
 
-const GetAnswerIndex = (radioId) => {
-    let radioIdSplit = radioId.split("_");
-    return radioIdSplit[radioIdSplit.length - 1];
+const setPage = (nextPage) => {
+    let currentPage = document.querySelector(".page.selected")
+
+    currentPage.classList.remove("selected")
+    nextPage.classList.add("selected")
 }
 
-const sendQuestions = () => {
 
-    let questions = {}
+const setErrorValidation = (questionsNames) => {
+    validationError.classList.add("_block")
 
-    for(let i = 0; i < answers.length; i++){
-        const answer = answers[i];
-        const checkedRadioButton = getCheckedRadioButtonsByName(answer);
-        if (checkedRadioButton === null){
-            alert("Пожалуйста, ответьте на все вопросы !!!");
-            return;
+    validationCloseButton.onclick = null;
+
+    validationCloseButton.addEventListener("click", () => {
+
+        questionsNames.forEach(questionName => {
+            let question = document.querySelector(`#${questionName} > .question__heading`)
+            question.classList.add("_validation-error")
+        })
+
+        let firstQuestion = document.querySelector(`#${questionsNames[0]}`)
+
+        let page = firstQuestion.closest(".page")
+
+        setPage(page)
+        window.scrollTo({top: firstQuestion.offsetTop})
+        validationError.classList.remove("_block")
+    })
+
+}
+
+
+endButton.addEventListener("click", () => {
+    let testSummery = {}
+
+    let notValidQuestions = []
+
+    for(let i = 0; i < names.length; i++){
+
+        const name = names[i];
+
+        let items = document.querySelectorAll(`input[name=${name}]`)
+
+        let isValid = false;
+
+        items.forEach(radioButton => {
+            if (radioButton.checked){
+                testSummery[name] = getRadioButtonId(radioButton)
+                isValid = true;
+            }
+        })
+
+        if (!isValid) {
+            notValidQuestions.push(name)
         }
-        questions[answer] = GetAnswerIndex(checkedRadioButton.id);
     }
 
-    tg.sendData(JSON.stringify(questions));
-    tg.close();
-}
+    if(notValidQuestions.length > 0){
+        setErrorValidation(notValidQuestions)
+        return null
+    }
 
-tg.onEvent("mainButtonClicked", sendQuestions);
+    console.log(testSummery)
+
+})
+
