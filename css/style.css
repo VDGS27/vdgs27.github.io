@@ -65,27 +65,28 @@ p, span{
 .main-banner__info{
     position: absolute;
     z-index: 3;
-    bottom: 2rem;
+    font-size: 0.75rem;
+    bottom: 1.5rem;
 }
 
 .main-banner__heading{
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .main-banner__second-heading{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-bottom: 1rem;
 }
 
 .question{
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .question__heading{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .question__heading._validation-error{
@@ -116,12 +117,12 @@ p, span{
 .answer__image{
     padding: 0;
     margin: 0;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .answer__image-wrapper{
-    padding: 1rem;
+    padding: 0.75rem;
     display: flex;
     border: 1px solid #000;
     justify-content: center;
@@ -131,7 +132,7 @@ p, span{
 }
 
 .answer__text{
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     text-align: center;
 }
 
@@ -140,7 +141,7 @@ p, span{
 }
 
 .questions__row{
-    gap: 3rem;
+    gap: 1.5rem;
 }
 
 .pagination{
