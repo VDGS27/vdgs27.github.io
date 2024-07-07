@@ -148,7 +148,7 @@ sendButton.addEventListener("click", () => {
 
     let data = {
         user_data: {
-            first_Name: firstNameElement.value,
+            first_name: firstNameElement.value,
             last_name: lastNameElement.value,
             email: emailElement.value,
             phone_number: phoneElement.value
