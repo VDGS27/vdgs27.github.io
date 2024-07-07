@@ -156,7 +156,7 @@ sendButton.addEventListener("click", () => {
         test_data: testSummery
     }
 
-    tg.sendData(data)
+    tg.sendData(JSON.stringify(data))
     tg.close()
 
 })
