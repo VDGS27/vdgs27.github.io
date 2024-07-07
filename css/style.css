@@ -87,10 +87,11 @@ p, span{
 
 .question__heading{
     font-size: 1.25rem;
+    transition: all 0.3s ease-in-out;
 }
 
 .question__heading._validation-error{
-    color: red;
+    color: #fa3636;
 }
 
 .answers{
@@ -129,6 +130,7 @@ p, span{
     align-items: center;
     background: #101010;
     border-radius: 2rem;
+    transition: all 0.2s ease-in-out;
 }
 
 .answer__text{
@@ -249,6 +251,149 @@ p, span{
 
 .validation-error__close-button:hover{
     border: 1px solid #fff;
+}
+
+.form-page {
+
+    position: relative;
+    height: 100vh;
+}
+
+.form-page__heading{
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.form-page__text{
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+    font-size: 0.75rem;
+}
+
+.form-element{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-element__input{
+    border: 1px solid #000000;
+    background: #101010;
+    padding: 1rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-element__input:invalid{
+    border: 1px solid #eb5757;
+}
+
+.form-element__input.invalid{
+    border: 1px solid #eb5757;
+}
+
+.form-element__input::placeholder{
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.form-element__pattern{
+    margin-left: 0.3rem;
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: #e1e1e1;
+}
+
+
+.form-element__input:focus{
+    outline: none;
+    border: 1px solid #fff;
+}
+
+.form-checkbox{
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.form-checkbox.invalid > .form-checkbox__wrapper {
+    border: 1px solid #eb5757;
+}
+
+.form-checkbox.invalid > .form-checkbox__wrapper {
+    border: 1px solid #eb5757;
+}
+
+.form-checkbox.invalid > .form-checkbox__text {
+    color: #eb5757;
+}
+
+.form-checkbox__input:checked + .form-checkbox__wrapper > .form-checkbox__icon{
+    opacity: 1;
+}
+
+.form-checkbox__input{
+    display: none;
+}
+
+.form-checkbox__text{
+    color: #fff;
+    font-size: 0.75rem;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.form-checkbox__wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0.67rem;
+    background: #101010;
+    border-radius: 0.375rem;
+    border: 1px solid #000;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-checkbox__icon{
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.send-button__wrapper{
+    position: absolute;
+    bottom: 1.5rem;
+}
+
+.send-button{
+    width: 100%;
+    padding: 1rem;
+    color: #fff;
+    background: #101010;
+    border-radius: 1rem;
+    border: 1px solid #000;
+}
+
+.send-button:disabled{
+    background: #000;
+    color: gray;
+}
+
+.back-button{
+    background: none;
+    border: none;
+    padding:0.5rem 0.25rem 0.5rem 0rem;
+    margin-top: 1rem;
+    color: #fff;
+    font-size: 1.25rem;
 }
 
 @media (max-width: 360px) {

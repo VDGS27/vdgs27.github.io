@@ -7,7 +7,13 @@ const validationError = document.querySelector(".validation-error")
 const validationCloseButton = document.querySelector(".validation-error__close-button")
 
 
-allRadioButtons.forEach(radioButton => radioButton.checked = false)
+allRadioButtons.forEach(radioButton => {
+    // radioButton.checked = false
+    radioButton.addEventListener("click", () => {
+        let questionHeading = document.querySelector(`#${radioButton.name} > .question__heading`)
+        questionHeading.classList.remove("_validation-error")
+    })
+})
 
 
 const endButton = document.querySelector(".end-button")
@@ -16,9 +22,8 @@ const endButton = document.querySelector(".end-button")
 const names = allRadioButtons.map(radioButton => radioButton.name)
     .filter((value, index, array) => array.indexOf(value) === index);
 
-const getRadioButtonId = (radioButton) => {
-    let splitId = radioButton.id.split("-")
-    return parseInt(splitId[splitId.length - 1])
+const getRadioButtonValue = (radioButton) => {
+    return parseInt(radioButton.value)
 }
 
 
@@ -29,12 +34,18 @@ const setPage = (nextPage) => {
     nextPage.classList.add("selected")
 }
 
+const clearQuestions = () => {
+    let questions = document.querySelectorAll(".question__heading")
+    questions.forEach(question => question.classList.remove("_validation-error"))
+}
+
 
 const setErrorValidation = (questionsNames) => {
+
+    clearQuestions()
+
     validationError.classList.add("_block")
-
     validationCloseButton.onclick = null;
-
     validationCloseButton.addEventListener("click", () => {
 
         questionsNames.forEach(questionName => {
@@ -53,8 +64,7 @@ const setErrorValidation = (questionsNames) => {
 
 }
 
-
-endButton.addEventListener("click", () => {
+const getTestSummery = () => {
     let testSummery = {}
 
     let notValidQuestions = []
@@ -69,7 +79,7 @@ endButton.addEventListener("click", () => {
 
         items.forEach(radioButton => {
             if (radioButton.checked){
-                testSummery[name] = getRadioButtonId(radioButton)
+                testSummery[name] = getRadioButtonValue(radioButton)
                 isValid = true;
             }
         })
@@ -78,14 +88,22 @@ endButton.addEventListener("click", () => {
             notValidQuestions.push(name)
         }
     }
-
+    console.log(notValidQuestions)
     if(notValidQuestions.length > 0){
         setErrorValidation(notValidQuestions)
         return null
     }
 
-    tg.sendData(JSON.stringify(testSummery));
-    tg.close();
+    // tg.sendData(JSON.stringify(testSummery));
+    // tg.close();
+    return testSummery
+}
 
+endButton.addEventListener("click", () => {
+    getTestSummery()
+    let lastPage = document.querySelector("#page-7")
+    let currentPage = document.querySelector(".page.selected")
+    currentPage.classList.remove("selected")
+    lastPage.classList.add("selected")
 })
 

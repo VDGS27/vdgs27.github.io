@@ -6,6 +6,36 @@ const getPageIndex = (pagination) => {
     return parseInt(splitId[splitId.length - 1])
 }
 
+const isQuestionsOnPageIsValid = (currentPage) => {
+    let questionsNames = [... currentPage.querySelectorAll(".question")].map(
+        (item) => item.id
+    )
+
+    let notValidQuestions = []
+
+    questionsNames.forEach(
+        (questionName) => {
+            let isValid = false
+            let radiobuttons = document.querySelectorAll(`input[name=${questionName}]`)
+            radiobuttons.forEach(radioButton => {
+                if (radioButton.checked)
+                    isValid = true
+            })
+
+            if(!isValid)
+                notValidQuestions.push(questionName)
+        }
+    )
+    if (notValidQuestions.length > 0)
+    {
+        setErrorValidation(notValidQuestions)
+        return false
+    }
+
+    return true
+
+}
+
 paginations.forEach(
     (pagination) => {
 
@@ -16,10 +46,15 @@ paginations.forEach(
 
         if (current_page_index !== 6)
             nextButton.addEventListener("click", () => {
-                window.scrollTo({top: 0});
-                let current_page = document.querySelector(`#page-${current_page_index}`)
-                let next_page = document.querySelector(`#page-${current_page_index + 1}`)
 
+
+                let current_page = document.querySelector(`#page-${current_page_index}`)
+
+                if (!isQuestionsOnPageIsValid(current_page))
+                    return
+
+                let next_page = document.querySelector(`#page-${current_page_index + 1}`)
+                window.scrollTo({top: 0});
                 current_page.classList.remove("selected")
                 next_page.classList.add("selected")
 
@@ -27,6 +62,7 @@ paginations.forEach(
 
         if (current_page_index !== 1)
             previousButton.addEventListener("click", () => {
+                clearQuestions()
                 window.scrollTo({top: 0});
                 let current_page = document.querySelector(`#page-${current_page_index}`)
                 let previous_page = document.querySelector(`#page-${current_page_index - 1}`)
