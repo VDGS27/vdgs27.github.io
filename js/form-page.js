@@ -24,7 +24,7 @@ isAgreeElement.checked = false
 sendButton.disabled = true
 
 const allItemsIsValid = () => {
-    sendButton.disabled = validFields < 4;
+    sendButton.disabled = validFields < 5;
 }
 
 const addValidField = () => {
