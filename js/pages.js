@@ -54,8 +54,8 @@ paginations.forEach(
                     return
 
                 let next_page = document.querySelector(`#page-${current_page_index + 1}`)
-                window.scrollTo({top: 0});
                 current_page.classList.remove("selected")
+                window.scrollTo({top: 0});
                 next_page.classList.add("selected")
 
             })
@@ -63,11 +63,11 @@ paginations.forEach(
         if (current_page_index !== 1)
             previousButton.addEventListener("click", () => {
                 clearQuestions()
-                window.scrollTo({top: 0});
                 let current_page = document.querySelector(`#page-${current_page_index}`)
                 let previous_page = document.querySelector(`#page-${current_page_index - 1}`)
 
                 current_page.classList.remove("selected")
+                window.scrollTo({top: 0});
                 previous_page.classList.add("selected")
 
             })

@@ -4,6 +4,8 @@ const emailElement = document.querySelector("#email")
 const phoneElement = document.querySelector("#phone")
 const isAgreeElement = document.querySelector("#isAgree")
 const sendButton = document.querySelector(".send-button")
+const backButton = document.querySelector(".back-button")
+
 const namePattern = new RegExp("^[A-Za-zа-яА-ЯёЁ\s-]+$")
 const emailPattern = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
 const phoneValidation = new RegExp(/^[\d\+][\d\(\)\ -]{4,14}\d$/)
@@ -14,6 +16,8 @@ const inputs = [
 ]
 
 let inputElements = [firstNameElement, lastNameElement, emailElement, phoneElement]
+
+
 
 inputElements.forEach(element => element.value = "")
 isAgreeElement.checked = false
@@ -157,3 +161,17 @@ sendButton.addEventListener("click", () => {
 
 })
 
+
+backButton.addEventListener("click", () => {
+    let currentPage = document.querySelector(".page.selected")
+
+    let currentPageIdSplit = currentPage.id.split("-")
+
+    let previousPageIdIndex = parseInt(currentPageIdSplit[currentPageIdSplit.length - 1]) - 1
+    let previousPage = document.querySelector(`#page-${previousPageIdIndex}`)
+
+    currentPage.classList.remove("selected")
+    window.scrollTo({top: 0});
+    previousPage.classList.add("selected")
+
+})

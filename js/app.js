@@ -101,9 +101,12 @@ const getTestSummery = () => {
 
 endButton.addEventListener("click", () => {
     getTestSummery()
+
     let lastPage = document.querySelector("#page-7")
     let currentPage = document.querySelector(".page.selected")
+
     currentPage.classList.remove("selected")
+    window.scrollTo({top: 0});
     lastPage.classList.add("selected")
 })
 
