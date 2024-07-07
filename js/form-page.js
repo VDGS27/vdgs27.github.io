@@ -13,7 +13,7 @@ const inputs = [
     firstNameElement, lastNameElement
 ]
 
-let inputElements = [firstNameElement, lastNameElement, emailElement, phoneValidation]
+let inputElements = [firstNameElement, lastNameElement, emailElement, phoneElement]
 
 inputElements.forEach(element => element.value = "")
 isAgreeElement.checked = false

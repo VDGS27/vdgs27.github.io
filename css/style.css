@@ -256,7 +256,7 @@ p, span{
 .form-page {
 
     position: relative;
-    height: 100vh;
+    height: 100%;
 }
 
 .form-page__heading{
@@ -368,10 +368,10 @@ p, span{
     transition: all 0.2s ease-in-out;
 }
 
-.send-button__wrapper{
-    position: absolute;
-    bottom: 1.5rem;
-}
+/*.send-button__wrapper{*/
+/*    position: absolute;*/
+/*    bottom: 1.5rem;*/
+/*}*/
 
 .send-button{
     width: 100%;
