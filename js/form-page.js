@@ -8,7 +8,7 @@ const backButton = document.querySelector(".back-button")
 
 const namePattern = new RegExp("^[A-Za-zа-яА-ЯёЁ\s-]+$")
 const emailPattern = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-const phoneValidation = new RegExp(/^[\d\+][\d\(\)\ -]{4,14}\d$/)
+const phoneValidation = /^[\d\+][\d\(\)\ -]{4,14}\d$/
 
 let validFields = 0
 const inputs = [
